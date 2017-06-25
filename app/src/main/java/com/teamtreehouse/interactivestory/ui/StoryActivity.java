@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -47,7 +48,7 @@ public class StoryActivity extends AppCompatActivity {
     }
 
     private void loadPage(int pageNumber) {
-        Page page = story.getPage(pageNumber);
+        final Page page = story.getPage(pageNumber);
 
         Drawable image = ContextCompat.getDrawable(this, page.getImageId());
         storyImageView.setImageDrawable(image);
@@ -57,8 +58,35 @@ public class StoryActivity extends AppCompatActivity {
         pageText = String.format(pageText, name);
         storyTextView.setText(pageText);
 
-        choice1Button.setText(page.getChoice1().getTextId());
-        choice2Button.setText(page.getChoice2().getTextId());
+        if(page.isFinalPage()){
+            choice1Button.setVisibility(View.INVISIBLE);
+            choice2Button.setText(R.string.play_again_button_text);
+        }
+        else {
+            loadButtons(page);
+        }
     }
+
+    private void loadButtons(final Page page) {
+        choice1Button.setText(page.getChoice1().getTextId());
+        choice1Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int nextPage = page.getChoice1().getNextPage();
+                loadPage(nextPage);
+            }
+        });
+
+        choice2Button.setText(page.getChoice2().getTextId());
+        choice2Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int nextPage = page.getChoice2().getNextPage();
+                loadPage(nextPage);
+            }
+        });
+    }
+
+
 }
 
