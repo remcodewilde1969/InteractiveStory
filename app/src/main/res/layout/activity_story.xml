@@ -20,7 +20,7 @@
         tools:text="@string/page0_choice2"/>
 
     <Button
-        android:id="@+id/Choice1Button"
+        android:id="@+id/choice1Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
@@ -42,7 +42,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/Choice1Button">
+        app:layout_constraintBottom_toTopOf="@+id/choice1Button">
 
         <LinearLayout
             android:layout_width="match_parent"

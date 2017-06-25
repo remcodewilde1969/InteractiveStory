@@ -2,20 +2,12 @@ package com.teamtreehouse.interactivestory.model;
 
 
 public class Choice {
-    private int imageId;
     private int textId;
+    private int nextPage;
 
-    public Choice(int imageId, int textId) {
-        this.imageId = imageId;
+    public Choice(int textId, int nextPage) {
         this.textId = textId;
-    }
-
-    public int getImageId() {
-        return imageId;
-    }
-
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
+        this.nextPage = nextPage;
     }
 
     public int getTextId() {
@@ -24,5 +16,13 @@ public class Choice {
 
     public void setTextId(int textId) {
         this.textId = textId;
+    }
+
+    public int getNextPage() {
+        return nextPage;
+    }
+
+    public void setNextPage(int nextPage) {
+        this.nextPage = nextPage;
     }
 }
