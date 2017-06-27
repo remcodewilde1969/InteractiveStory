@@ -33,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //nameField leeg na backbutton
+    @Override
+    protected void onResume() {
+        super.onResume();
+        nameField.setText("");
+    }
+
     private void startStory(String name) {
         Intent intent = new Intent(this, StoryActivity.class);
         Resources resources = getResources();
